@@ -1,8 +1,9 @@
 package edu.ucdenver.sweanyn.flashcardfinal;
 
-public class FlashcardBook {
+import java.io.Serializable;
+
+public class FlashcardBook implements Serializable {
     private String name;
-    // Add other fields as needed, such as an image resource id or a list of flashcards
 
     public FlashcardBook(String name) {
         this.name = name;
@@ -11,6 +12,7 @@ public class FlashcardBook {
     public String getName() {
         return name;
     }
+
 
     // Add other methods as needed
 }

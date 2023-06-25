@@ -21,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- The following is the flash card book activity -->
+        <activity android:name=".FlashcardBookActivity" />
+
     </application>
 
 </manifest>

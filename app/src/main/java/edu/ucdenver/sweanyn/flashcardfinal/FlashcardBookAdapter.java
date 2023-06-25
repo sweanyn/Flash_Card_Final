@@ -1,5 +1,6 @@
 package edu.ucdenver.sweanyn.flashcardfinal;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,12 +40,23 @@ public class FlashcardBookAdapter extends RecyclerView.Adapter<FlashcardBookAdap
     public void onBindViewHolder(ViewHolder holder, int position) {
         FlashcardBook flashcardBook = flashcardBooks.get(position);
 
-        // Here, you would set the actual image and text
+        // Here, you would set the actual text
         holder.flashcardBookName.setText(flashcardBook.getName());
         holder.editIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Handle edit icon click here
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Handle item click here
+                // For example, you could start a new activity and pass the flashcard book as an extra:
+                Intent intent = new Intent(view.getContext(), FlashcardBookActivity.class);
+                intent.putExtra("flashcard_book", flashcardBook);
+                view.getContext().startActivity(intent);
             }
         });
     }
