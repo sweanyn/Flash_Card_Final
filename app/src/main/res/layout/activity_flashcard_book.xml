@@ -5,12 +5,41 @@
     android:layout_height="match_parent"
     tools:context=".FlashcardBookActivity">
 
-    <TextView
-        android:id="@+id/flashcard_book_name"
+    <ImageView
+        android:id="@+id/edit_book_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="8dp"
+        android:src="@android:drawable/ic_menu_edit" />
+
+    <TextView
+        android:id="@+id/flashcard_book_name"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
         android:text="Book Name"
-        android:textSize="24sp"
-        android:layout_centerInParent="true" />
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/edit_book_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="8dp"
+        android:src="@android:drawable/ic_menu_edit" />
+
+    <TextView
+        android:id="@+id/flashcard_book_answer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="400dp"
+        android:gravity="center"
+        android:text="Book Answer"
+        android:textSize="24sp" />
+
 
 </RelativeLayout>
