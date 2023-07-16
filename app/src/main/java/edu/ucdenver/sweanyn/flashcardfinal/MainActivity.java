@@ -46,3 +46,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 }
+
+//Implement the buttons for all menus and FAB's
+//Implement the database for storing flashcards and books
+//Logic to process each database entry (for the recyclerView)
+//Onclick for each book displayed on main
+//Add some sort of dialog when created a new book.
+//Add edit button functionality for Question, Answer, and item_flashcard_book button.
+

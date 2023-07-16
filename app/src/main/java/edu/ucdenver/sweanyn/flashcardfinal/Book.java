@@ -8,13 +8,13 @@ import androidx.room.PrimaryKey;
 public class Book {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private long id;
 
     @ColumnInfo(name = "book_name")
     private String bookName;
 
     // Getters
-    public int getId() { return id; }
+    public long getId() { return id; }
     public String getBookName() { return bookName; }
 
     // Setters

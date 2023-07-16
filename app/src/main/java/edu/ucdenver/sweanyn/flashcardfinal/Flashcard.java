@@ -13,7 +13,7 @@ import androidx.room.PrimaryKey;
 public class Flashcard {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private long id;
 
     @ColumnInfo(name = "question")
     private String question;
@@ -25,7 +25,7 @@ public class Flashcard {
     private int bookId;
 
     // Getters
-    public int getId() { return id; }
+    public long getId() { return id; }
     public String getQuestion() { return question; }
     public String getAnswer() { return answer; }
     public int getBookId() { return bookId; }
