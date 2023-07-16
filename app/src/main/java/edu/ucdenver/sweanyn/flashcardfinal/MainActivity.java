@@ -18,7 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private RecyclerView recyclerView;
-    private BookAdapter adapter;
+    private BookAdapter bookAdapter;
+    
+    private FlashcardDatabase flashcardDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         List<Book> flashcardBooks = new ArrayList<>();
         // Add flashcard books to the list
 
-        adapter = new BookAdapter(flashcardBooks);
-        recyclerView.setAdapter(adapter);
+        bookAdapter = new BookAdapter(flashcardBooks);
+        recyclerView.setAdapter(bookAdapter);
     }
 }
 
