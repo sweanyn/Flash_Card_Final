@@ -53,4 +53,6 @@ public class MainActivity extends AppCompatActivity {
 //Onclick for each book displayed on main
 //Add some sort of dialog when created a new book.
 //Add edit button functionality for Question, Answer, and item_flashcard_book button.
+//On Click for the Answer to reveal/hide the answer
+
 
