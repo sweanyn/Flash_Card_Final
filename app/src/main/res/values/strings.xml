@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FlashCardFinal</string>
+    <string name="app_name">Flash Card App</string>
     <string name="book_name">Book Name Goes Here</string>
     <string name="delete_book">Delete Book\n</string>
     <string name="edit_book_name">Edit Book Name</string>
