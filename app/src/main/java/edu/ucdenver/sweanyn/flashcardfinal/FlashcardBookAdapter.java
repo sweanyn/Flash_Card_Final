@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class FlashcardBookAdapter extends RecyclerView.Adapter<FlashcardBookAdapter.ViewHolder> {
-    private List<FlashcardBook> flashcardBooks;
+    private List<Book> flashcardBooks;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView flashcardBookName;
@@ -26,7 +26,7 @@ public class FlashcardBookAdapter extends RecyclerView.Adapter<FlashcardBookAdap
     }
 
 
-    public FlashcardBookAdapter(List<FlashcardBook> flashcardBooks) {
+    public FlashcardBookAdapter(List<Book> flashcardBooks) {
         this.flashcardBooks = flashcardBooks;
     }
 
@@ -38,10 +38,10 @@ public class FlashcardBookAdapter extends RecyclerView.Adapter<FlashcardBookAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        FlashcardBook flashcardBook = flashcardBooks.get(position);
+        Book flashcardBook = flashcardBooks.get(position);
 
         // Here, you would set the actual text
-        holder.flashcardBookName.setText(flashcardBook.getName());
+        holder.flashcardBookName.setText(flashcardBook.getBookName());
         holder.editIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +55,7 @@ public class FlashcardBookAdapter extends RecyclerView.Adapter<FlashcardBookAdap
                 // Handle item click here
                 // For example, you could start a new activity and pass the flashcard book as an extra:
                 Intent intent = new Intent(view.getContext(), FlashcardBookActivity.class);
-                intent.putExtra("flashcard_book", flashcardBook);
+                //intent.putExtra("flashcard_book", flashcardBook);
                 view.getContext().startActivity(intent);
             }
         });

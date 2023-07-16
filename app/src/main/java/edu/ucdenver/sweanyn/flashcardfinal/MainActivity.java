@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 2 is the number of columns, adjust as necessary
 
-        List<FlashcardBook> flashcardBooks = new ArrayList<>();
+        List<Book> flashcardBooks = new ArrayList<>();
         // Add flashcard books to the list
 
         adapter = new FlashcardBookAdapter(flashcardBooks);

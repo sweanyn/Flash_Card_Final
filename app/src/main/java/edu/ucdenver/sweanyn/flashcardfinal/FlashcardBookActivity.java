@@ -14,9 +14,9 @@ public class FlashcardBookActivity extends AppCompatActivity {
 
         flashcardBookNameTextView = findViewById(R.id.flashcard_book_name);
 
-        FlashcardBook flashcardBook = (FlashcardBook) getIntent().getSerializableExtra("flashcard_book");
+        Book flashcardBook = (Book) getIntent().getSerializableExtra("flashcard_book");
         if (flashcardBook != null) {
-            flashcardBookNameTextView.setText(flashcardBook.getName());
+            flashcardBookNameTextView.setText(flashcardBook.getBookName());
         }
     }
 }
