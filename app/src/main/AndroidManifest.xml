@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <!-- The following is the flash card book activity -->
-        <activity android:name=".FlashcardBookActivity" />
+        <activity android:name=".BookActivity" />
 
     </application>
 

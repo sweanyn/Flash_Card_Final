@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class FlashcardBookAdapter extends RecyclerView.Adapter<FlashcardBookAdapter.ViewHolder> {
+public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private List<Book> flashcardBooks;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -26,12 +26,12 @@ public class FlashcardBookAdapter extends RecyclerView.Adapter<FlashcardBookAdap
     }
 
 
-    public FlashcardBookAdapter(List<Book> flashcardBooks) {
+    public BookAdapter(List<Book> flashcardBooks) {
         this.flashcardBooks = flashcardBooks;
     }
 
     @Override
-    public FlashcardBookAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BookAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_flashcard_book, parent, false);
         return new ViewHolder(view);
     }
@@ -54,7 +54,7 @@ public class FlashcardBookAdapter extends RecyclerView.Adapter<FlashcardBookAdap
             public void onClick(View view) {
                 // Handle item click here
                 // For example, you could start a new activity and pass the flashcard book as an extra:
-                Intent intent = new Intent(view.getContext(), FlashcardBookActivity.class);
+                Intent intent = new Intent(view.getContext(), BookActivity.class);
                 //intent.putExtra("flashcard_book", flashcardBook);
                 view.getContext().startActivity(intent);
             }

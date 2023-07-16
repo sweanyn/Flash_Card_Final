@@ -4,13 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class FlashcardBookActivity extends AppCompatActivity {
+public class BookActivity extends AppCompatActivity {
     private TextView flashcardBookNameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flashcard_book);
+        setContentView(R.layout.activity_book);
 
         flashcardBookNameTextView = findViewById(R.id.flashcard_book_name);
 

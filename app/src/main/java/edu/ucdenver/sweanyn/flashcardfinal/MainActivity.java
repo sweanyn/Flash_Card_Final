@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private FlashcardBookAdapter adapter;
+    private BookAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         List<Book> flashcardBooks = new ArrayList<>();
         // Add flashcard books to the list
 
-        adapter = new FlashcardBookAdapter(flashcardBooks);
+        adapter = new BookAdapter(flashcardBooks);
         recyclerView.setAdapter(adapter);
     }
 }
