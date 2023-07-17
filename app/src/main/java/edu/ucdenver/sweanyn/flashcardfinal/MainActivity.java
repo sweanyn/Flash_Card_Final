@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Handle the click event here to create a new flashcard book.
+                AddBookDialog addBookDialog = new AddBookDialog();
+                addBookDialog.show(getSupportFragmentManager(), "");
             }
         });
 
@@ -59,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
 //Sejal
 //Add some sort of dialog when created a new book (in main).
+    //need to add on click for save button in AddBookDialog.java
+
 //Add dialog box for new card (in book)
 //Implement the buttons for all menus and FAB's
 //Add edit button functionality for Question, Answer, and item_flashcard_book button.

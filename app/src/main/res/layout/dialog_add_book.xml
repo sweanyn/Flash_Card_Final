@@ -30,7 +30,7 @@
             android:hint="@string/hint_book_name">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputName"
+                android:id="@+id/textInputBook"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_book_name"
@@ -44,7 +44,7 @@
             android:hint="@string/hint_question">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputPhone"
+                android:id="@+id/textInputQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_question"
@@ -58,9 +58,10 @@
             android:hint="@string/hint_answer">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEmail"
+                android:id="@+id/textInputAnswer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/hint_answer"
                 android:imeOptions="actionNext" />
         </com.google.android.material.textfield.TextInputLayout>
 
