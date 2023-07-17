@@ -5,4 +5,11 @@
     <string name="edit_book_name">Edit Book Name</string>
     <string name="home">Back to Home</string>
     <string name="new_card">Add Card</string>
+    <string name="headerAddBook">Add Book</string>
+    <string name="hint_book_name">Book Name (Required)</string>
+    <string name="hint_question">Question</string>
+    <string name="hint_answer">Answer</string>
+    <string name="button_clear">Clear</string>
+    <string name="button_save">Save</string>
+    <string name="button_main_menu">Main Menu</string>
 </resources>
