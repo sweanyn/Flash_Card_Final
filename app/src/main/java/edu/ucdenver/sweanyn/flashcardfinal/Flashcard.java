@@ -22,17 +22,17 @@ public class Flashcard {
     private String answer;
 
     @ColumnInfo(name = "book_id")
-    private int bookId;
+    private long bookId;
 
     // Getters
     public long getId() { return id; }
     public String getQuestion() { return question; }
     public String getAnswer() { return answer; }
-    public int getBookId() { return bookId; }
+    public long getBookId() { return bookId; }
 
     // Setters
-    public void setId(int id) { this.id = id; }
+    public void setId(long id) { this.id = id; }
     public void setQuestion(String question) { this.question = question; }
     public void setAnswer(String answer) { this.answer = answer; }
-    public void setBookId(int bookId) { this.bookId = bookId; }
+    public void setBookId(long bookId) { this.bookId = bookId; }
 }
