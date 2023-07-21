@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Flash Card App</string>
+    <string name="app_name">STUDY TIME (A Flashcard App)</string>
     <string name="book_name">Book Name Goes Here</string>
     <string name="delete_book">Delete Book\n</string>
     <string name="edit_book_name">Edit Book Name</string>
@@ -13,6 +13,7 @@
     <string name="button_save">Save</string>
     <string name="button_main_menu">Main Menu</string>
     <string name="headerAddCard">Add Card</string>
+    <string name="new_book">Add New Book</string>
 
 
 </resources>

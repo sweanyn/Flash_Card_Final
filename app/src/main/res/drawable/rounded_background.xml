@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="24dp" />
+    <!-- starting color of gradient (black) -->
+    <gradient
+        android:startColor="#FF444444"
+        android:endColor="#444444"
+        android:angle="0" />
+    <!-- ending color of gradient (transparent white) -->
+</shape>

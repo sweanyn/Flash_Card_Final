@@ -3,6 +3,7 @@ package edu.ucdenver.sweanyn.flashcardfinal;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -15,13 +16,14 @@ import java.util.List;
 
 import edu.ucdenver.sweanyn.flashcardfinal.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AddBookDialog.Listener {
 
     private ActivityMainBinding binding;
     private RecyclerView recyclerView;
     private BookAdapter bookAdapter;
     
     private FlashcardDatabase flashcardDatabase;
+    private List<Book> flashcardBooks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,25 +34,30 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
-
         FloatingActionButton fab = binding.createNewBookFab;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Handle the click event here to create a new flashcard book.
                 AddBookDialog addBookDialog = new AddBookDialog();
+                addBookDialog.setListener(MainActivity.this);  // Set the MainActivity as the Listener
                 addBookDialog.show(getSupportFragmentManager(), "");
             }
         });
 
         recyclerView = binding.content.recyclerView;
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 2 is the number of columns, adjust as necessary
+        recyclerView.setLayoutManager(new LinearLayoutManager(this)); //linear layout manager for a single column scrollable list
 
-        List<Book> flashcardBooks = new ArrayList<>();
-        // Add flashcard books to the list
+        flashcardDatabase = FlashcardDatabase.getInstance(this);
+        flashcardBooks = flashcardDatabase.bookDao().getAll(); //fetch all our books!
 
         bookAdapter = new BookAdapter(flashcardBooks);
         recyclerView.setAdapter(bookAdapter);
+    }
+
+    @Override
+    public void onBookAdded(Book newBook) {
+        bookAdapter.addBook(newBook);
     }
 
     @Override

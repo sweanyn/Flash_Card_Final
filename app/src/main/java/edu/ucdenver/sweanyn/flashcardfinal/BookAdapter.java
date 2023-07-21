@@ -14,6 +14,11 @@ import java.util.List;
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private List<Book> flashcardBooks;
 
+    public void addBook(Book book) {
+        this.flashcardBooks.add(book);
+        notifyDataSetChanged(); // Notifies the RecyclerView that data has changed and it should refresh itself
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView flashcardBookName;
         public ImageView editIcon;
