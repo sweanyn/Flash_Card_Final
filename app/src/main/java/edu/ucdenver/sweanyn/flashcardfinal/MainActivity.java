@@ -62,6 +62,18 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //handles overflow for adding new card
+        int id = item.getItemId();
+
+        if (id == R.id.action_new_card) {
+            AddBookDialog addBookDialog = new AddBookDialog();
+            addBookDialog.show(getSupportFragmentManager(), "");
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onBookAdded(Book newBook) {
         bookAdapter.addBook(newBook);
     }
