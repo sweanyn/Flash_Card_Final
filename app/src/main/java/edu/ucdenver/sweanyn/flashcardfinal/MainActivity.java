@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
         int id = item.getItemId();
 
         if (id == R.id.action_new_card) {
-            AddBookDialog addBookDialog = new AddBookDialog();
-            addBookDialog.show(getSupportFragmentManager(), "");
+            AddCardDialog addCardDialog = new AddCardDialog();
+            addCardDialog.show(getSupportFragmentManager(), "");
         }
         return super.onOptionsItemSelected(item);
     }
@@ -105,6 +105,9 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
     //need to add on click for save button in AddBookDialog.java
 
 //Add dialog box for new card (in book)
+    //Need a method in MainActivity for adding card (just like onBookAdded)
+    //Need to complete AddCardDialog.java
+
 //Implement the buttons for all menus and FAB's
 //Add edit button functionality for Question, Answer, and item_flashcard_book button.
         //Dialog boxes?

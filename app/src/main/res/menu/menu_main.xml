@@ -5,6 +5,6 @@
 
         android:id="@+id/action_new_card"
         android:icon="@android:drawable/ic_menu_add"
-        android:title="@string/new_book"
+        android:title="@string/new_card"
         app:showAsAction="never" />
 </menu>
