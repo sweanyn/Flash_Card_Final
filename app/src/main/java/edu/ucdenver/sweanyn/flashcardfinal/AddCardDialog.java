@@ -19,7 +19,7 @@ public class AddCardDialog extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(binding.getRoot());
-        //Need a method in MainActivity for adding card (just like onBookAdded)
+        //Need a method in MainActivity for adding card (just like onBookAdded) so that we can link menu_book to it
 
         return builder.create();
     }

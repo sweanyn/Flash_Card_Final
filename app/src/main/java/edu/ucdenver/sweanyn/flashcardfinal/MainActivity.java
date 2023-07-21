@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
     //need to add on click for save button in AddBookDialog.java
 
 //Add dialog box for new card (in book)
-    //Need a method in MainActivity for adding card (just like onBookAdded)
+    //Need a method in MainActivity for adding card (just like onBookAdded) so that we can link menu_book to it
     //Need to complete AddCardDialog.java
 
 //Implement the buttons for all menus and FAB's
