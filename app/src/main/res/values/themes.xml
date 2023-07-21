@@ -4,7 +4,7 @@
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/tan_white</item>
         <item name="colorPrimaryDark">@color/almost_black</item>
-        <item name="colorAccent">@color/tan_white</item>
+        <item name="colorAccent">@color/ligher_grey</item>
     </style>
 
     <style name="Theme.FlashCardFinal" parent="Base.Theme.FlashCardFinal" />

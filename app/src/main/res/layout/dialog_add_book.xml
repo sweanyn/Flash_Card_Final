@@ -9,8 +9,11 @@
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_background"
+        android:backgroundTint="@color/ligher_grey"
         android:gravity="center"
         android:text="@string/headerAddBook"
+        android:textColor="@color/black"
         android:textSize="24sp" />
 
     <View
@@ -22,6 +25,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_background"
+        android:backgroundTint="@color/tan_white"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -34,7 +39,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_book_name"
-                android:imeOptions="actionNext" />
+                android:imeOptions="actionNext"
+                android:textColor="@color/almost_black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_question"
-                android:imeOptions="actionNext" />
+                android:imeOptions="actionNext"
+                android:textColor="@color/almost_black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,7 +69,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_answer"
-                android:imeOptions="actionNext" />
+                android:imeOptions="actionNext"
+                android:textColor="@color/almost_black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -79,6 +87,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_dark"
                 android:text="@string/button_clear"
+                android:textColor="@color/almost_black"
                 android:textSize="16sp"
                 tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
 
@@ -91,6 +100,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_dark"
                 android:text="@string/button_save"
+                android:textColor="@color/almost_black"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
@@ -102,7 +112,8 @@
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_dark"
-                android:text="@string/button_main_menu"
+                android:text="@string/close"
+                android:textColor="@color/almost_black"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
