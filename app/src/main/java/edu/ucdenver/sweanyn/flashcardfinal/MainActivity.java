@@ -2,12 +2,16 @@ package edu.ucdenver.sweanyn.flashcardfinal;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -47,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
 
         recyclerView = binding.content.recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(this)); //linear layout manager for a single column scrollable list
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing);
+        recyclerView.addItemDecoration(new SpaceItemDecoration(spacingInPixels));
 
         flashcardDatabase = FlashcardDatabase.getInstance(this);
         flashcardBooks = flashcardDatabase.bookDao().getAll(); //fetch all our books!
@@ -62,8 +68,14 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        // Apply theme to the menu.
+        for (int i = 0; i < menu.size(); i++) {
+            MenuItem menuItem = menu.getItem(i);
+            ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(this, R.style.CustomPopupMenu);
+        }
         return true;
     }
 }
