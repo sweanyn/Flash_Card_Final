@@ -1,5 +1,6 @@
 package edu.ucdenver.sweanyn.flashcardfinal;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +52,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 // Handle edit icon click here
+
             }
         });
 

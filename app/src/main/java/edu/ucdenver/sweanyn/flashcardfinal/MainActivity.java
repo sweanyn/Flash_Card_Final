@@ -111,3 +111,4 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
 //Implement the buttons for all menus and FAB's
 //Add edit button functionality for Question, Answer, and item_flashcard_book button.
         //Dialog boxes?
+    //Created edit_text.xml as a common layout for editing Question, Answer, and item_flashcard_book button
