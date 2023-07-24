@@ -1,5 +1,6 @@
 package edu.ucdenver.sweanyn.flashcardfinal;
 
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -96,6 +97,7 @@ public class BookActivity extends AppCompatActivity {
         return true;
     }
 
+
     // Handles the click events on menu items
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -146,6 +148,30 @@ public class BookActivity extends AppCompatActivity {
 
         else if (item.getItemId() == R.id.action_delete_book) {
             // handle click event on 'Delete Book' action
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Delete Book")
+                    .setMessage("Are you sure you want to delete this book?")
+                    .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Delete the book from the database
+                            Book book = bookDao.getById(bookId);
+                            bookDao.delete(book);
+                            //need to go to main activity after this (to do)
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+
+            AlertDialog dialog = builder.show();
+
+            // Change the button color
+            Button positiveButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+            Button negativeButton = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+            positiveButton.setTextColor(Color.DKGRAY);
+            negativeButton.setTextColor(Color.DKGRAY);
             return true;
 
         }
