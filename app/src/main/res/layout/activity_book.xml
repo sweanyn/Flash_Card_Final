@@ -52,6 +52,8 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        app:tint="@color/white"
+        app:backgroundTint="@color/ligher_grey"
         app:srcCompat="@android:drawable/ic_media_next" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -59,8 +61,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        app:tint="@color/white"
+        app:backgroundTint="@color/ligher_grey"
         app:srcCompat="@android:drawable/ic_media_previous" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
