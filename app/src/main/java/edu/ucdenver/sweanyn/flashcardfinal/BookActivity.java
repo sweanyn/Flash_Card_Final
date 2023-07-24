@@ -21,6 +21,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -30,7 +31,9 @@ public class BookActivity extends AppCompatActivity {
     private ActivityBookBinding binding;
     private BookDao bookDao;
     private long bookId;
-
+    private FlashcardDao flashcardDao;
+    private List<Flashcard> flashcards;
+    private int currentIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +46,33 @@ public class BookActivity extends AppCompatActivity {
         bookId = getIntent().getLongExtra("book_id", -1);
         if (bookId != -1) {
             FlashcardDatabase db = FlashcardDatabase.getInstance(this);
+            flashcardDao = db.flashcardDao();
             bookDao = db.bookDao();
             getBook(bookId);
+            loadFlashcards();
         }
+        //Setting the on click listeners for the Two FAB forward and backward buttons.
+        binding.nextfab.setOnClickListener(new View.OnClickListener() {
+            //Forward button
+            @Override
+            public void onClick(View view) {
+                if (!flashcards.isEmpty()) {
+                    currentIndex = (currentIndex + 1) % flashcards.size();
+                    updateCardData();
+                }
+            }
+        });
+
+        //Backward button
+        binding.previousfab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!flashcards.isEmpty()) {
+                    currentIndex = (currentIndex - 1 + flashcards.size()) % flashcards.size();
+                    updateCardData();
+                }
+            }
+        });
     }
 
     private void getBook(long bookId) {
@@ -66,6 +93,34 @@ public class BookActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    // The loadFlashcards method:
+    private void loadFlashcards() {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                flashcards = flashcardDao.getByBookId(bookId);
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!flashcards.isEmpty()) {
+                            updateCardData();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    // The updateCardData method:
+    private void updateCardData() {
+        Flashcard flashcard = flashcards.get(currentIndex);
+        binding.contentCards.flashcardBookQuestion.setText(flashcard.getQuestion());
+        binding.contentCards.flashcardBookAnswer.setText(flashcard.getAnswer());
     }
 
     private void updateBookName(String newBookName) {

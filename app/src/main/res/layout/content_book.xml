@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/edit_book_name"
+        android:id="@+id/edit_book_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -17,12 +17,12 @@
         android:src="@android:drawable/ic_menu_edit" />
 
     <TextView
-        android:id="@+id/flashcard_book_name"
+        android:id="@+id/flashcard_book_question"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="50dp"
         android:gravity="center"
-        android:text="Question"
+        android:text="@string/card_question"
         android:textSize="24sp" />
 
     <ImageView
@@ -40,7 +40,7 @@
         android:layout_height="200dp"
         android:layout_marginTop="300dp"
         android:gravity="center"
-        android:text="Answer"
+        android:text="@string/card_answer"
         android:textSize="24sp" />
 
 

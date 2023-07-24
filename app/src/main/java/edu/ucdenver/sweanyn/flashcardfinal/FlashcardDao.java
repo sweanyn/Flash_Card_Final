@@ -16,7 +16,7 @@ public interface FlashcardDao {
     List<Flashcard> getAll();
 
     @Query("SELECT * FROM flashcards WHERE book_id = :bookId")
-    List<Flashcard> getByBookId(int bookId);
+    List<Flashcard> getByBookId(long bookId);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     long insert(Flashcard flashcard);
