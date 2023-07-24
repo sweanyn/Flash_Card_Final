@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
     //Need to complete AddCardDialog.java
 
 //Implement the buttons for all menus and FAB's
+    //Need to update code for 'Delete Book' action in BookActivity.java to go back to main menu after deleting book
 //Add edit button functionality for Question, Answer, and item_flashcard_book button.
         //Dialog boxes?
     //Created edit_text.xml as a common layout for editing Question, Answer, and item_flashcard_book button
