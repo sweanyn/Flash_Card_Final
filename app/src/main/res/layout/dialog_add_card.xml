@@ -9,6 +9,9 @@
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_background"
+        android:backgroundTint="@color/ligher_grey"
+        android:textColor="@color/black"
         android:gravity="center"
         android:text="@string/headerAddCard"
         android:textSize="24sp" />
@@ -54,6 +57,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
+            android:backgroundTint="@color/almost_black"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -87,14 +91,14 @@
                 tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
             <Button
-                android:id="@+id/buttonMainMenu"
+                android:id="@+id/buttonClose"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:background="@android:color/holo_blue_dark"
-                android:text="@string/button_main_menu"
+                android:text="@string/button_close"
                 android:textColor="@color/almost_black"
                 android:textColorLink="@color/almost_black"
                 android:textSize="16sp"

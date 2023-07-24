@@ -16,7 +16,7 @@ public interface BookDao {
     List<Book> getAll();
 
     @Query("SELECT * FROM books WHERE id = :bookId")
-    Book getById(int bookId);
+    Book getById(long bookId);
 
     @Query("SELECT * FROM books WHERE book_name = :bookName LIMIT 1")
     Book findByName(String bookName);

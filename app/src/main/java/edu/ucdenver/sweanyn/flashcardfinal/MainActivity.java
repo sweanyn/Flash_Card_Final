@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
             }
         });
 
-        recyclerView = binding.content.recyclerView;
+        recyclerView = binding.contentCards.recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(this)); //linear layout manager for a single column scrollable list
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing);
         recyclerView.addItemDecoration(new SpaceItemDecoration(spacingInPixels));
@@ -66,9 +66,11 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
         //handles overflow for adding new card
         int id = item.getItemId();
 
-        if (id == R.id.action_new_card) {
-            AddCardDialog addCardDialog = new AddCardDialog();
-            addCardDialog.show(getSupportFragmentManager(), "");
+        if (id == R.id.action_new_book) {
+            // Handle the click event here to create a new flashcard book.
+            AddBookDialog addBookDialog = new AddBookDialog();
+            addBookDialog.setListener(MainActivity.this);  // Set the MainActivity as the Listener
+            addBookDialog.show(getSupportFragmentManager(), "");
         }
         return super.onOptionsItemSelected(item);
     }

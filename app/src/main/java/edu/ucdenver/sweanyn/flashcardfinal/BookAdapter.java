@@ -17,7 +17,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     public void addBook(Book book) {
         this.flashcardBooks.add(book);
-        notifyDataSetChanged(); // Notifies the RecyclerView that data has changed and it should refresh itself
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -30,7 +30,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             editIcon = view.findViewById(R.id.edit_icon);
         }
     }
-
 
     public BookAdapter(List<Book> flashcardBooks) {
         this.flashcardBooks = flashcardBooks;
@@ -46,23 +45,19 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         Book flashcardBook = flashcardBooks.get(position);
 
-        // Here, you would set the actual text
         holder.flashcardBookName.setText(flashcardBook.getBookName());
         holder.editIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Handle edit icon click here
-
             }
         });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Handle item click here
-                // For example, you could start a new activity and pass the flashcard book as an extra:
                 Intent intent = new Intent(view.getContext(), BookActivity.class);
-                //intent.putExtra("flashcard_book", flashcardBook);
+                intent.putExtra("book_id", flashcardBook.getId());
                 view.getContext().startActivity(intent);
             }
         });
@@ -73,3 +68,4 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         return flashcardBooks.size();
     }
 }
+

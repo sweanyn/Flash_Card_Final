@@ -2,7 +2,7 @@
     <string name="app_name">STUDY TIME (A Flashcard App)</string>
     <string name="book_name">Book Name Goes Here</string>
     <string name="delete_book">Delete Book\n</string>
-    <string name="edit_book_name">Edit Book Name</string>
+    <string name="edit_book_name">Edit Name</string>
     <string name="home">Back to Home</string>
     <string name="new_card">Add Card</string>
     <string name="headerAddBook">Add Book</string>
@@ -16,6 +16,9 @@
     <string name="new_book">Add New Book</string>
     <string name="close">Close</string>
     <string name="headerEditText">Edit Text</string>
+    <string name="button_close">Close</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="headerEditBook">Edit Book Name\n</string>
 
 
 </resources>
