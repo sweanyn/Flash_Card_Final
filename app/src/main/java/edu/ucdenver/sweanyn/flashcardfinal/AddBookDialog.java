@@ -93,6 +93,7 @@ public class AddBookDialog extends DialogFragment {
                                     Book newBook = new Book();
                                     newBook.setBookName(bookTitle);
                                     long newBookId = bookDao.insert(newBook);
+                                    newBook.setId(newBookId);
 
                                     Flashcard newFlashcard = new Flashcard();
                                     newFlashcard.setQuestion(question);
