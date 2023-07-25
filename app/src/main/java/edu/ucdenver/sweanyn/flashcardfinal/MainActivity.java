@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
         flashcardDatabase = FlashcardDatabase.getInstance(this);
         flashcardBooks = flashcardDatabase.bookDao().getAll(); //fetch all our books!
 
-        bookAdapter = new BookAdapter(flashcardBooks);
+        bookAdapter = new BookAdapter(flashcardBooks, flashcardDatabase.bookDao());
         recyclerView.setAdapter(bookAdapter);
     }
 
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
         flashcardBooks = flashcardDatabase.bookDao().getAll(); //fetch all our books!
 
         // Set our book list & Refresh!
-        bookAdapter = new BookAdapter(flashcardBooks);
+        bookAdapter = new BookAdapter(flashcardBooks, flashcardDatabase.bookDao());
         recyclerView.setAdapter(bookAdapter);
     }
     @Override
