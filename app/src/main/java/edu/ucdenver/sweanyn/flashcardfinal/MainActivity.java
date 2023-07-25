@@ -105,24 +105,3 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
     }
 }
 
-
-//Nathan
-//MainActivity.java (database, onClicks, bindings, recyclerView)
-//Logic to process each database entry (for the recyclerView)
-//Onclick for each book displayed on main
-//Implement the database for storing flashcards and books in main
-//On Click for the Answer to reveal/hide the answer
-
-//Sejal
-//Add some sort of dialog when created a new book (in main).
-    //need to add on click for save button in AddBookDialog.java
-
-//Add dialog box for new card (in book)
-    //Need a method in MainActivity for adding card (just like onBookAdded) so that we can link menu_book to it
-    //Need to complete AddCardDialog.java
-
-//Implement the buttons for all menus and FAB's
-    //Need to update code for 'Delete Book' action in BookActivity.java to go back to main menu after deleting book
-//Add edit button functionality for Question, Answer, and item_flashcard_book button.
-        //Dialog boxes?
-    //Created edit_text.xml as a common layout for editing Question, Answer, and item_flashcard_book button
