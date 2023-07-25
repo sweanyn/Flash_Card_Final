@@ -112,17 +112,5 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     public int getItemCount() {
         return flashcardBooks.size();
     }
-
-
-
-    public interface OnBookNameChangedListener {
-        void onBookNameChanged();
-    }
-
-    private OnBookNameChangedListener onBookNameChangedListener;
-
-    public void setOnBookNameChangedListener(OnBookNameChangedListener onBookNameChangedListener) {
-        this.onBookNameChangedListener = onBookNameChangedListener;
-    }
 }
 

@@ -4,17 +4,14 @@ package edu.ucdenver.sweanyn.flashcardfinal;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -307,28 +304,48 @@ public class BookActivity extends AppCompatActivity implements AddCardDialog.Lis
 
         else if (item.getItemId() == R.id.action_delete_card) {
             if (!flashcards.isEmpty()) {
-                Flashcard currentFlashcard = flashcards.get(currentIndex);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Delete Card")
+                        .setMessage("Are you sure you want to delete this card?")
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Flashcard currentFlashcard = flashcards.get(currentIndex);
 
-                // Create a new thread for database operation
-                ExecutorService executor = Executors.newSingleThreadExecutor();
-                Handler handler = new Handler(Looper.getMainLooper());
+                                // Create a new thread for database operation
+                                ExecutorService executor = Executors.newSingleThreadExecutor();
+                                Handler handler = new Handler(Looper.getMainLooper());
 
-                executor.execute(() -> {
-                    // Deleting the current card
-                    flashcardDao.delete(currentFlashcard);
+                                executor.execute(() -> {
+                                    // Deleting the current card
+                                    flashcardDao.delete(currentFlashcard);
 
-                    // Load flashcards again and update the card on the screen in the main thread
-                    handler.post(() -> {
-                        // Removing the card from our List.
-                        flashcards.remove(currentIndex);
-                        // Resetting the index if required.
-                        if (currentIndex >= flashcards.size()) {
-                            currentIndex = 0;
-                        }
-                        loadFlashcards();
-                        updateCardData();
-                    });
-                });
+                                    // Load flashcards again and update the card on the screen in the main thread
+                                    handler.post(() -> {
+                                        // Removing the card from our List.
+                                        flashcards.remove(currentIndex);
+                                        // Resetting the index if required.
+                                        if (currentIndex >= flashcards.size()) {
+                                            currentIndex = 0;
+                                        }
+                                        loadFlashcards();
+                                        updateCardData();
+                                    });
+                                });
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User cancelled the dialog
+                            }
+                        });
+
+                AlertDialog dialog = builder.show();
+
+                // Change the button color
+                Button positiveButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+                Button negativeButton = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                positiveButton.setTextColor(Color.DKGRAY);
+                negativeButton.setTextColor(Color.DKGRAY);
             }
             return true;
         }
