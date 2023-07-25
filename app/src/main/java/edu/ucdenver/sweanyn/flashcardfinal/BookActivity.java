@@ -55,7 +55,25 @@ public class BookActivity extends AppCompatActivity implements AddCardDialog.Lis
             getBook(bookId);
             loadFlashcards();
         }
-
+        // Attach a click listener to the edit buttons
+        // Question edit button.
+        binding.contentCards.editBookQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // The current question text
+                String currentQuestion = binding.contentCards.flashcardBookQuestion.getText().toString();
+                showEditDialog(currentQuestion, true);
+            }
+        });
+        // Answer edit button.
+        binding.contentCards.editBookAnswer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // The current answer text
+                String currentAnswer = binding.contentCards.flashcardBookQuestion.getText().toString();
+                showEditDialog(currentAnswer, false);
+            }
+        });
         // Attach a click listener to the answer view
         binding.contentCards.flashcardBookAnswer.setOnClickListener(new View.OnClickListener()
         {
@@ -326,6 +344,80 @@ public class BookActivity extends AppCompatActivity implements AddCardDialog.Lis
         loadFlashcards();
         updateCardData();
     }
+
+
+    private void showEditDialog(String currentText, boolean isQuestion) {
+        if (!flashcards.isEmpty()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            final EditText input = new EditText(this);
+            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            input.setText("");
+            builder.setView(input);
+
+            builder.setTitle(isQuestion ? "Edit Question" : "Edit Answer")
+                    .setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            String newText = input.getText().toString();
+                            if (!TextUtils.isEmpty(newText)) {
+                                // Saving the new text.
+                                if (isQuestion) {
+                                    updateQuestion(newText);
+                                } else {
+                                    updateAnswer(newText);
+                                }
+                            }
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // User cancelled the dialog
+                        }
+                    });
+
+            AlertDialog dialog = builder.show();
+            // Change the button color
+            Button positiveButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+            Button negativeButton = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+            positiveButton.setTextColor(Color.DKGRAY);
+            negativeButton.setTextColor(Color.DKGRAY);
+            // TODO: Customize the dialog if needed
+        }
+    }
+
+    private void updateQuestion(String newQuestion) {
+        if (!flashcards.isEmpty()) {
+            // Update the question of the current flashcard
+            Flashcard currentFlashcard = flashcards.get(currentIndex);
+            currentFlashcard.setQuestion(newQuestion);
+            // Update the flashcard in the database
+            Executors.newSingleThreadExecutor().execute(() -> {
+                flashcardDao.update(currentFlashcard);
+                // fetch the updated flashcards in the main thread
+                runOnUiThread(() -> {
+                    loadFlashcards();
+                    updateCardData();
+                });
+            });
+        }
+    }
+
+    private void updateAnswer(String newAnswer) {
+        if (!flashcards.isEmpty()) {
+            // Update the answer of the current flashcard
+            Flashcard currentFlashcard = flashcards.get(currentIndex);
+            currentFlashcard.setAnswer(newAnswer);
+            // Update the flashcard in the database
+            Executors.newSingleThreadExecutor().execute(() -> {
+                flashcardDao.update(currentFlashcard);
+                // fetch the updated flashcards in the main thread
+                runOnUiThread(() -> {
+                    loadFlashcards();
+                    updateCardData();
+                });
+            });
+        }
+    }
+
 }
 
 
