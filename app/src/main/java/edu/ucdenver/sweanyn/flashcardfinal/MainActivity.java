@@ -62,6 +62,17 @@ public class MainActivity extends AppCompatActivity implements AddBookDialog.Lis
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        //Refresh the bookDatabase.
+        flashcardBooks = flashcardDatabase.bookDao().getAll(); //fetch all our books!
+
+        // Set our book list & Refresh!
+        bookAdapter = new BookAdapter(flashcardBooks);
+        recyclerView.setAdapter(bookAdapter);
+    }
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //handles overflow for adding new card
         int id = item.getItemId();

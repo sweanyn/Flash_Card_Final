@@ -27,7 +27,7 @@ import java.util.concurrent.Executors;
 
 import edu.ucdenver.sweanyn.flashcardfinal.databinding.ActivityBookBinding;
 
-public class BookActivity extends AppCompatActivity {
+public class BookActivity extends AppCompatActivity implements AddCardDialog.Listener {
     private ActivityBookBinding binding;
     private BookDao bookDao;
     private long bookId;
@@ -42,6 +42,8 @@ public class BookActivity extends AppCompatActivity {
         binding = ActivityBookBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
+
+
 
         bookId = getIntent().getLongExtra("book_id", -1);
         if (bookId != -1) {
@@ -212,6 +214,7 @@ public class BookActivity extends AppCompatActivity {
                             Book book = bookDao.getById(bookId);
                             bookDao.delete(book);
                             //need to go to main activity after this (to do)
+                            finish();
                         }
                     })
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -238,6 +241,9 @@ public class BookActivity extends AppCompatActivity {
                 public void onCardAdded(Flashcard newFlashcard) {
                     // Add your code to handle the new card here
                     // For example, you could refresh the list of cards
+                    loadFlashcards();
+                    AddCardDialog dialog = new AddCardDialog(bookId);
+                    dialog.setListener(this);
                 }
             });
             dialog.show(getSupportFragmentManager(), "AddCardDialog");
@@ -248,6 +254,11 @@ public class BookActivity extends AppCompatActivity {
         else {
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onCardAdded(Flashcard newFlashcard) {
+        loadFlashcards();
     }
 }
 
