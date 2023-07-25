@@ -36,7 +36,8 @@ public class BookActivity extends AppCompatActivity implements AddCardDialog.Lis
     private int currentIndex = 0;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
         binding = ActivityBookBinding.inflate(getLayoutInflater());
@@ -46,19 +47,43 @@ public class BookActivity extends AppCompatActivity implements AddCardDialog.Lis
 
 
         bookId = getIntent().getLongExtra("book_id", -1);
-        if (bookId != -1) {
+        if (bookId != -1)
+        {
             FlashcardDatabase db = FlashcardDatabase.getInstance(this);
             flashcardDao = db.flashcardDao();
             bookDao = db.bookDao();
             getBook(bookId);
             loadFlashcards();
         }
-        //Setting the on click listeners for the Two FAB forward and backward buttons.
-        binding.nextfab.setOnClickListener(new View.OnClickListener() {
-            //Forward button
+
+        // Attach a click listener to the answer view
+        binding.contentCards.flashcardBookAnswer.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-                if (!flashcards.isEmpty()) {
+            public void onClick(View v)
+            {
+                // If the current text is "[ TAP TO REVEAL ]", change it to the actual answer
+                // Otherwise, change it back to "[ TAP TO REVEAL ]"
+                if (binding.contentCards.flashcardBookAnswer.getText().toString().equals("[ TAP TO REVEAL ]"))
+                {
+                    binding.contentCards.flashcardBookAnswer.setText(flashcards.get(currentIndex).getAnswer());
+                }
+                else
+                {
+                    binding.contentCards.flashcardBookAnswer.setText("[ TAP TO REVEAL ]");
+                }
+            }
+        });
+        //Setting the on click listeners for the Two FAB forward and backward buttons.
+        //Forward button
+        binding.nextfab.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View view)
+            {
+                if (!flashcards.isEmpty())
+                {
                     currentIndex = (currentIndex + 1) % flashcards.size();
                     updateCardData();
                 }
@@ -66,10 +91,13 @@ public class BookActivity extends AppCompatActivity implements AddCardDialog.Lis
         });
 
         //Backward button
-        binding.previousfab.setOnClickListener(new View.OnClickListener() {
+        binding.previousfab.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-                if (!flashcards.isEmpty()) {
+            public void onClick(View view)
+            {
+                if (!flashcards.isEmpty())
+                {
                     currentIndex = (currentIndex - 1 + flashcards.size()) % flashcards.size();
                     updateCardData();
                 }
@@ -119,10 +147,19 @@ public class BookActivity extends AppCompatActivity implements AddCardDialog.Lis
     }
 
     // The updateCardData method:
-    private void updateCardData() {
-        Flashcard flashcard = flashcards.get(currentIndex);
-        binding.contentCards.flashcardBookQuestion.setText(flashcard.getQuestion());
-        binding.contentCards.flashcardBookAnswer.setText(flashcard.getAnswer());
+    private void updateCardData()
+    {
+        if (flashcards.isEmpty())
+        {
+            binding.contentCards.flashcardBookQuestion.setText("Question");
+            binding.contentCards.flashcardBookAnswer.setText("Answer");
+        }
+        else
+        {
+            Flashcard flashcard = flashcards.get(currentIndex);
+            binding.contentCards.flashcardBookQuestion.setText(flashcard.getQuestion());
+            binding.contentCards.flashcardBookAnswer.setText("[ TAP TO REVEAL ]");
+        }
     }
 
     private void updateBookName(String newBookName) {
@@ -239,9 +276,8 @@ public class BookActivity extends AppCompatActivity implements AddCardDialog.Lis
             dialog.setListener(new AddCardDialog.Listener() {
                 @Override
                 public void onCardAdded(Flashcard newFlashcard) {
-                    // Add your code to handle the new card here
-                    // For example, you could refresh the list of cards
                     loadFlashcards();
+                    updateCardData();
                     AddCardDialog dialog = new AddCardDialog(bookId);
                     dialog.setListener(this);
                 }
@@ -251,6 +287,35 @@ public class BookActivity extends AppCompatActivity implements AddCardDialog.Lis
 
         }
 
+        else if (item.getItemId() == R.id.action_delete_card) {
+            if (!flashcards.isEmpty()) {
+                Flashcard currentFlashcard = flashcards.get(currentIndex);
+
+                // Create a new thread for database operation
+                ExecutorService executor = Executors.newSingleThreadExecutor();
+                Handler handler = new Handler(Looper.getMainLooper());
+
+                executor.execute(() -> {
+                    // Deleting the current card
+                    flashcardDao.delete(currentFlashcard);
+
+                    // Load flashcards again and update the card on the screen in the main thread
+                    handler.post(() -> {
+                        // Removing the card from our List.
+                        flashcards.remove(currentIndex);
+                        // Resetting the index if required.
+                        if (currentIndex >= flashcards.size()) {
+                            currentIndex = 0;
+                        }
+                        loadFlashcards();
+                        updateCardData();
+                    });
+                });
+            }
+            return true;
+        }
+
+
         else {
             return super.onOptionsItemSelected(item);
         }
@@ -259,6 +324,7 @@ public class BookActivity extends AppCompatActivity implements AddCardDialog.Lis
     @Override
     public void onCardAdded(Flashcard newFlashcard) {
         loadFlashcards();
+        updateCardData();
     }
 }
 

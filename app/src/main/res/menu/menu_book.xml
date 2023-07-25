@@ -26,5 +26,10 @@
         android:title="@string/new_card"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_delete_card"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/delete_card"
+        app:showAsAction="never" />
 
 </menu>
